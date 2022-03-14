@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Елизавета Циприс">
+  <link rel="icon" href="images/logo.svg">
+  <link rel="stylesheet" href="index.css">
+  <title>Место</title>
+</head>
+<body class="page">
+  <header class="header">
+    <p class="header__logo"></p>
+  </header>
+
+  <main class="content">
+    <section class="profile">
+      <div class="profile__details">
+        <img class="profile__avatar" src="images/avatar-Jacques.jpg" alt="Изображение пользователя">
+        <div class="profile__info">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button class="profile__edit"></button>
+          <p class="profile__about">Исследователь океана</p>
+        </div>
+      </div>
+      <button class="profile__add"></button>
+    </section>
+
+    <section class="popup ">
+      <form class="popup__container">
+        <button class="popup__reset" type="reset"></button>
+        <fieldset class="popup__fields">
+          <legend class="popup__heading">Редактировать профиль</legend>
+          <input id="name" class="popup__field" type="text" placeholder="Имя" required>
+          <input id="about" class="popup__field" type="text" placeholder="О себе" required>
+        </fieldset>
+        <button class="popup__submit" type="submit">Сохранить</button>
+      </form>
+    </section>
+
+    <ul class="cards">
+      <li class="card">
+        <figure class="card__container">
+          <img class="card__image" src="images/msk.jpg" alt="Москва">
+          <div class="card__caption">
+            <h2 class="card__title">Москва</h2>
+            <button class="card__like"></button>
+          </div>
+        </figure>
+      </li>
+      <li class="card">
+        <figure class="card__container">
+          <img class="card__image" src="images/st-pete.jpg" alt="Санкт-Петербург">
+          <div class="card__caption">
+            <h2 class="card__title">Санкт-Петербург</h2>
+            <button class="card__like"></button>
+          </div>
+        </figure>
+      </li>
+      <li class="card">
+        <figure class="card__container">
+          <img class="card__image" src="images/nsk.jpg" alt="Новосибирск">
+          <div class="card__caption">
+            <h2 class="card__title">Новосибирск</h2>
+            <button class="card__like"></button>
+          </div>
+        </figure>
+      </li>
+      <li class="card">
+        <figure class="card__container">
+          <img class="card__image" src="images/kazan.jpg" alt="Казань">
+          <div class="card__caption">
+            <h2 class="card__title">Казань</h2>
+            <button class="card__like"></button>
+          </div>
+        </figure>
+      </li>
+      <li class="card">
+        <figure class="card__container">
+          <img class="card__image" src="images/ekb.jpg" alt="Екатеринбург">
+          <div class="card__caption">
+            <h2 class="card__title">Екатеринбург</h2>
+            <button class="card__like"></button>
+          </div>
+        </figure>
+      </li>
+      <li class="card">
+        <figure class="card__container">
+          <img class="card__image" src="images/tomsk.jpg" alt="Томск">
+          <div class="card__caption">
+            <h2 class="card__title">Томск</h2>
+            <button class="card__like"></button>
+          </div>
+        </figure>
+      </li>
+    </ul>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
+  </footer>
+</body>
+</html>
