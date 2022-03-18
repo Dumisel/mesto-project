@@ -1,8 +1,7 @@
-.popup__container {
+.popup__userform {
   margin: 0;
   padding: 0;
   width: 430px;
-  min-height: 330px;
   z-index: 2;
   position: relative;
   display: flex;
@@ -10,11 +9,10 @@
   border-radius: 10px;
   background-color: #ffffff;
   color: #000000;
-}
+  }
 
 @media screen and (max-width: 767px) {
-  .popup__container {
+  .popup__userform {
     width: 282px;
-    min-height: 322px;
   }
 }

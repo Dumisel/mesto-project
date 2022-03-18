@@ -1,7 +1,7 @@
 .card__caption {
   margin: 0 auto;
-  padding: 25px 0;
-  max-width: 246px;
+  padding: 25px 15px 25px 21px;
+  width: 246px;
   display: flex;
   justify-content: space-between;
 }

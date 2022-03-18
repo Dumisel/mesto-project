@@ -5,15 +5,18 @@
   min-height: 73px;
   display: grid;
   grid-template-columns: max-content min-content;
-  grid-template-rows: max-content min-content;
-  gap: 18px 16px;
+  grid-template-rows: repeat(2, min-content);
+  gap: 8px 18px;
   align-items: baseline;
+  align-content: center;
 }
 
 @media screen and (max-width: 767px) {
   .profile__info {
     max-width: 100%;
-    padding-left: 0;
-    gap: 10px 14px;
+    min-height: fit-content;
+    padding-left: 46px;
+    gap: 8px 10px;
+    align-items: center;
   }
 }

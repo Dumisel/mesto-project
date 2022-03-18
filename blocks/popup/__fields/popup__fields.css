@@ -1,6 +1,6 @@
 .popup__fields {
   width: 358px;
-  margin:  34px auto 48px;
+  margin: 48px auto 0;
   padding: 0;
   border: 0;
 }
@@ -8,6 +8,6 @@
 @media screen and (max-width: 767px) {
   .popup__fields {
     width: 238px;
-    margin:  25px auto 45px;
+    margin: 74px auto 0;
   }
 }
