@@ -26,66 +26,56 @@
       <button class="profile__add" type="button" aria-label="Добавить"></button>
     </section>
 
-    <ul class="cards">
-      <li class="card">
-        <img class="card__image" src="images/msk.jpg" alt="Москва">
-        <div class="card__caption">
-          <h2 class="card__title">Москва</h2>
-          <button class="card__like" type="button" aria-label="Нравится"></button>
-        </div>
-      </li>
-      <li class="card">
-        <img class="card__image" src="images/st-pete.jpg" alt="Санкт-Петербург">
-        <div class="card__caption">
-          <h2 class="card__title">Санкт-Петербург</h2>
-          <button class="card__like" type="button" aria-label="Нравится"></button>
-        </div>
-      </li>
-      <li class="card">
-        <img class="card__image" src="images/nsk.jpg" alt="Новосибирск">
-        <div class="card__caption">
-          <h2 class="card__title">Новосибирск</h2>
-          <button class="card__like" type="button" aria-label="Нравится"></button>
-        </div>
-      </li>
-      <li class="card">
-        <img class="card__image" src="images/kazan.jpg" alt="Казань">
-        <div class="card__caption">
-          <h2 class="card__title">Казань</h2>
-          <button class="card__like" type="button" aria-label="Нравится"></button>
-        </div>
-      </li>
-      <li class="card">
-        <img class="card__image" src="images/ekb.jpg" alt="Екатеринбург">
-        <div class="card__caption">
-          <h2 class="card__title">Екатеринбург</h2>
-          <button class="card__like" type="button" aria-label="Нравится"></button>
-        </div>
-      </li>
-      <li class="card">
-        <img class="card__image" src="images/tomsk.jpg" alt="Томск">
-        <div class="card__caption">
-          <h2 class="card__title">Томск</h2>
-          <button class="card__like" type="button" aria-label="Нравится"></button>
-        </div>
-      </li>
-    </ul>
+    <ul class="cards"></ul>
   </main>
 
   <footer class="footer">
     <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
   </footer>
 
-  <div class="popup popup_opened">
+  <div class="popup" id="popup-user">
     <div class="popup__container">
       <button class="popup__close" type="button" aria-label="Закрыть"></button>
       <h2 class="popup__heading">Редактировать профиль</h2>
-      <form class="popup__form" name="userform">
+      <form class="popup__form" id="userform" name="userform">
         <input name="name" id="name" class="popup__field" type="text" placeholder="Имя" required>
         <input name="about" id="about" class="popup__field" type="text" placeholder="О себе" required>
-        <button class="popup__submit" type="submit">Сохранить</button>
+        <button id="save" class="popup__submit" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
+
+  <div class="popup" id="popup-card">
+    <div class="popup__container">
+      <button class="popup__close" type="button" aria-label="Закрыть"></button>
+      <h2 class="popup__heading">Новое место</h2>
+      <form class="popup__form" id="cardform" name="cardform">
+        <input name="title" id="title" class="popup__field" type="text" placeholder="Название" required>
+        <input name="link" id="link" class="popup__field" type="url" placeholder="Ссылка на картинку" required>
+        <button id="create" class="popup__submit" type="submit">Создать</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup" id="popup-image">
+    <figure class="image">
+      <button class="popup__close" type="button" aria-label="Закрыть"></button>
+      <img class="image__item" src="#" alt=" ">
+      <figcaption class="image__caption"></figcaption>
+    </figure>
+  </div>
+
+  <template id="card-template">
+    <li class="card">
+      <img class="card__image" src="#" alt=" ">
+      <div class="card__caption">
+        <h2 class="card__title"></h2>
+        <button class="card__like" type="button" aria-label="Нравится"></button>
+      </div>
+      <button class="card__delete" type="button" aria-label="Удалить"></button>
+    </li>
+  </template>
+
+  <script src="index.js"></script>
 </body>
 </html>
