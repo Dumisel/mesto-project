@@ -48,15 +48,14 @@ const initialCards = [
   }
   ];
 
-nameInput.value = profileName.textContent;
-aboutInput.value = profileAbout.textContent;
-
 function openPopup(popups){
   popups.classList.add('popup_opened');
 }
 
 editButton.addEventListener ('click', function () {
   openPopup(editPopup);
+  nameInput.value = profileName.textContent;
+  aboutInput.value = profileAbout.textContent;
 });
 
 addButton.addEventListener ('click', function () {
