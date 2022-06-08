@@ -1,0 +1,14 @@
+.popup__field {
+  width: 100%;
+  margin: 0 0 29px;
+  display: block;
+  position: relative;
+}
+
+.popup__field:first-of-type {
+  margin-top: 48px;
+}
+
+.popup__field:last-of-type {
+  margin-bottom: 0;
+}
