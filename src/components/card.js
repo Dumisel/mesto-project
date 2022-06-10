@@ -40,5 +40,5 @@ export function saveCard (evt) {
   closePopup (addPopup);
 };
 
-import {cardTemplate, imageCaption, image, cardsContainer, linkInput, titleInput, imagePopup, addPopup} from './index.js';
-import {openPopup, closePopup} from './modal.js'
+import {cardTemplate, imageCaption, image, cardsContainer, linkInput, titleInput, imagePopup, addPopup, } from './index.js';
+import {openPopup, closePopup} from './modal.js';

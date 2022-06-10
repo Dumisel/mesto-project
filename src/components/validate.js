@@ -1,41 +1,41 @@
-import {config} from './index.js'
+
 
 //показать ошибку
-const showError = (formElement, inputElement, errorMessage) => {
+const showError = (formElement, inputElement, errorMessage, settings) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add(config.inputErrorClass);
+  inputElement.classList.add(settings.inputErrorClass);
   errorElement.textContent = errorMessage;
-  errorElement.classList.add(config.errorClass);
+  errorElement.classList.add(settings.errorClass);
 };
 
 //скрыть ошибку
-const hideError = (formElement, inputElement) => {
+const hideError = (formElement, inputElement, settings) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove(config.inputErrorClass);
-  errorElement.classList.remove(config.errorClass);
+  inputElement.classList.remove(settings.inputErrorClass);
+  errorElement.classList.remove(settings.errorClass);
   errorElement.textContent = '';
 };
 
 //сообщение об ошибке
-const checkInputValidity = (formElement,inputElement) => {
+const checkInputValidity = (formElement, inputElement, settings) => {
   if(!inputElement.validity.valid) {
-    showError(formElement,inputElement, inputElement.validationMessage);
+    showError(formElement,inputElement, inputElement.validationMessage, settings);
   } else{
-    hideError(formElement, inputElement);
+    hideError(formElement, inputElement, settings);
   }
 };
 
 //установка слушателей на формы
-const setEventListeners = (formElement) => {
-  const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
-  const buttonElement = formElement.querySelector(config.submitButtonSelector);
+const setEventListeners = (formElement, settings) => {
+  const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
+  const buttonElement = formElement.querySelector(settings.submitButtonSelector);
 
-  toggleButtonState(inputList, buttonElement);
+  toggleButtonState(inputList, buttonElement, settings);
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', () => {
-      checkInputValidity(formElement, inputElement);
-      toggleButtonState(inputList, buttonElement);
+      checkInputValidity(formElement, inputElement, settings);
+      toggleButtonState(inputList, buttonElement, settings);
     });
   });
 };
@@ -48,23 +48,34 @@ const hasInvalidInput = (inputList) => {
 };
 
 //функция состояния кнопки
-const toggleButtonState = (inputList, buttonElement) => {
+export const toggleButtonState = (inputList, buttonElement, settings) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(config.inactiveButtonClass);
+    buttonElement.classList.add(settings.inactiveButtonClass);
+    buttonElement.setAttribute('disabled', true);
   } else {
-    buttonElement.classList.remove(config.inactiveButtonClass);
+    buttonElement.classList.remove(settings.inactiveButtonClass);
+    buttonElement.removeAttribute('disabled');
   }
 };
 
 //декларируем функцию валидации
-export const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll(config.formSelector));
+export const enableValidation = (settings) => {
+  const formList = Array.from(document.querySelectorAll(settings.formSelector));
 
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
     });
 
-    setEventListeners(formElement);
+    setEventListeners(formElement, settings);
+  });
+};
+
+export const disableValidation = (formElement, settings) => {
+  const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
+    const buttonElement = formElement.querySelector(settings.submitButtonSelector);
+    toggleButtonState(inputList, buttonElement, settings);
+    inputList.forEach((inputElement) => {
+    hideError(formElement, inputElement, settings);
   });
 };

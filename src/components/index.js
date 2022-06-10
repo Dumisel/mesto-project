@@ -1,7 +1,7 @@
 import '../pages/index.css';
 import {addCard, renderCard, saveCard} from './card.js';
 import {openPopup, closePopup, submitEditForm} from './modal.js';
-import {enableValidation} from './validate.js';
+import {enableValidation, disableValidation} from './validate.js';
 
 //основные переменные
 export const titleInput = document.querySelector('#title');
@@ -14,13 +14,12 @@ export const aboutInput = document.querySelector('#about');
 export const profileName = document.querySelector('.profile__name');
 export const profileAbout = document.querySelector('.profile__about');
 
-const popups = document.querySelectorAll('.popup');
+export const popups = document.querySelectorAll('.popup');
 export const editPopup = document.querySelector('#popup-user');
 export const addPopup = document.querySelector('#popup-card');
 export const imagePopup = document.querySelector('#popup-image');
 const editButton = document.querySelector('.profile__edit');
 const addButton = document.querySelector('.profile__add');
-const closeButtons = document.querySelectorAll('.popup__close');
 
 const formAdd = document.querySelector('#cardform');
 const formEdit = document.querySelector('#userform');
@@ -61,7 +60,7 @@ const initialCards = [
 
 
 //валидация
-export const config = {
+export const validationSettings = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__submit',
@@ -70,31 +69,36 @@ export const config = {
   errorClass: 'popup__input-error_active'
 };
 
-enableValidation(config);
-
-formAdd.addEventListener('submit', saveCard);
-
+//слушатели
 initialCards.forEach (function (item) {
   renderCard(item);
 });
 
-editButton.addEventListener ('click', function () {
-  openPopup(editPopup);
-  nameInput.value = profileName.textContent;
-  aboutInput.value = profileAbout.textContent;
-});
+popups.forEach((popup) => {
+  popup.addEventListener('mousedown', (evt) => {
+      if (evt.target.classList.contains('popup_opened')) {
+          closePopup(popup);
+      }
+      if (evt.target.classList.contains('popup__close')) {
+        closePopup(popup);
+      }
+  })
+})
 
 addButton.addEventListener ('click', function () {
-  openPopup(addPopup);
+  disableValidation(addPopup, validationSettings);
+  openPopup(addPopup, validationSettings);
 });
 
-closeButtons.forEach(function (item) {
-  item.addEventListener('click', function (evt) {
-     const parentPopup = evt.target.closest('.popup');
-     closePopup(parentPopup);
-  });
+formAdd.addEventListener('submit', saveCard);
+
+editButton.addEventListener ('click', function () {
+  nameInput.value = profileName.textContent;
+  aboutInput.value = profileAbout.textContent;
+  disableValidation(editPopup, validationSettings);
+  openPopup(editPopup, validationSettings);
 });
 
 formEdit.addEventListener('submit', submitEditForm);
 
-
+enableValidation(validationSettings);

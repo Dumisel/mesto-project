@@ -1,21 +1,18 @@
 export function openPopup(popups){
   popups.classList.add('popup_opened');
-
-  document.addEventListener('keydown', function(evt) {
-    if (evt.key === 'Escape' && popups.classList.contains('popup_opened')) {
-      popups.classList.remove('popup_opened');
-    }
-  });
-
-  document.addEventListener('mousedown', function(evt){
-    if (evt.target.classList.contains('popup_opened')) {
-      popups.classList.remove('popup_opened');
-    }
-  })
+  document.addEventListener('keydown', closeByEscape);
 }
 
 export function closePopup (popups){
   popups.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeByEscape);
+}
+
+function closeByEscape (evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
 }
 
 export function submitEditForm (evt) {
@@ -23,9 +20,10 @@ export function submitEditForm (evt) {
   profileName.textContent = `${nameInput.value}`;
   profileAbout.textContent = `${aboutInput.value}`;
   closePopup (editPopup);
-};
+}
 
-import {profileName, profileAbout, nameInput, aboutInput, editPopup} from './index.js'
+import {popups, profileName, profileAbout, nameInput, aboutInput, editPopup} from './index.js';
+
 
 
 
