@@ -15,8 +15,9 @@
   .profile__info {
     max-width: 100%;
     min-height: fit-content;
-    padding-left: 46px;
+    padding: 0;
     gap: 8px 10px;
     align-items: center;
+    justify-content: center;
   }
 }

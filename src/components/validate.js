@@ -1,5 +1,3 @@
-
-
 //показать ошибку
 const showError = (formElement, inputElement, errorMessage, settings) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
@@ -71,6 +69,7 @@ export const enableValidation = (settings) => {
   });
 };
 
+//снимаем валидацию с формы
 export const disableValidation = (formElement, settings) => {
   const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
     const buttonElement = formElement.querySelector(settings.submitButtonSelector);

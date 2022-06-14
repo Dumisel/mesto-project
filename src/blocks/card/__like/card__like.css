@@ -1,5 +1,5 @@
 .card__like {
-  margin: 5px 5px 1px 5px;
+  margin: 0 5px 2px;
   padding: 0;
   background-image: url(../../../images/like.svg);
   background-repeat: no-repeat;
