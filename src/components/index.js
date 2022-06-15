@@ -101,7 +101,7 @@ Promise.all([getInitialCards(), getProfileInfo()])
       renderCard(card, profileInfo);
       setProfileInfo(profileInfo);
       profileID = profileInfo;
-    });
+    })
   })
   .catch((err) => {
     console.log(err);

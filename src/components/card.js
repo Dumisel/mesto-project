@@ -21,6 +21,7 @@ const addCard = (card, profileInfo) => {
     if (evt.target.classList.contains('card__like_active')) {
       deleteLike(cardID)
       .then((res) => {
+        cardElement.querySelector('.card__likes-meter').textContent = res.likes.length;
         evt.target.classList.remove('card__like_active');
       })
       .catch((err) => {
@@ -34,7 +35,7 @@ const addCard = (card, profileInfo) => {
       })
       .catch((err) => {
         console.log(err);
-      });
+      })
     }
   });
 

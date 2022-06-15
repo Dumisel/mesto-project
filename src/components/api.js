@@ -8,35 +8,23 @@ const config = {
   }
 }
 
+const checkResponse = (res) => {
+  if (res.ok) {
+    return res.json();
+    } return Promise.reject(`Ошибка: ${res.status}`);
+}
+
 export const getProfileInfo = () => {
   return fetch(`${config.baseUrl}/users/me`, {headers: config.headers})
-  .then(res => {
-    if (res.ok) {
-      return res.json();
-      } return Promise.reject(`Ошибка: ${res.status}`);
-  })
-  .then((profileInfo) => {
-    return profileInfo;
-  })
-  .catch((err) => {
-    console.log(err);
-  })
-}
+  .then(checkResponse)
+  }
+
 
 export const getInitialCards = () => {
   return fetch(`${config.baseUrl}/cards`, {headers: config.headers})
-  .then(res => {
-    if (res.ok) {
-      return res.json();
-      } return Promise.reject(`Ошибка: ${res.status}`);
-  })
-  .then((cards) => {
-    return cards;
-  })
-  .catch((err) => {
-    console.log(err);
-  })
-}
+  .then(checkResponse)
+  }
+
 
 export const editProfileInfo = () => {
   return fetch(`${config.baseUrl}/users/me`, {
@@ -47,14 +35,7 @@ export const editProfileInfo = () => {
       about: aboutInput.value
     })
   })
-  .then(res => {
-    if (res.ok) {
-      return res.json();
-      } return Promise.reject(`Ошибка: ${res.status}`);
-  })
-  .catch((err) => {
-    console.log(err);
-  })
+  .then(checkResponse)
 }
 
 export const changeAvatar = () => {
@@ -65,14 +46,7 @@ export const changeAvatar = () => {
       avatar: avatarInput.value,
     })
   })
-  .then(res => {
-    if (res.ok) {
-      return res.json();
-      } return Promise.reject(`Ошибка: ${res.status}`);
-  })
-  .catch((err) => {
-    console.log(err);
-  })
+  .then(checkResponse)
 }
 
 export const postCard = () => {
@@ -84,17 +58,7 @@ export const postCard = () => {
       link: linkInput.value
     })
   })
-  .then(res => {
-    if (res.ok) {
-      return res.json();
-      } return Promise.reject(`Ошибка: ${res.status}`);
-  })
-  .then((res) => {
-    return res;
-  })
-  .catch((err) => {
-    console.log(err);
-  })
+  .then(checkResponse)
 }
 
 export const deleteCard = (cardID) => {
@@ -102,14 +66,7 @@ export const deleteCard = (cardID) => {
     headers: config.headers,
     method: "DELETE"
   })
-  .then(res => {
-    if (res.ok) {
-      return res.json();
-      } return Promise.reject(`Ошибка: ${res.status}`);
-  })
-  .catch((err) => {
-    console.log(err);
-  })
+  .then(checkResponse)
 }
 
 export const addLike = (cardID) => {
@@ -117,17 +74,7 @@ export const addLike = (cardID) => {
     headers: config.headers,
     method: "PUT"
   })
-  .then(res => {
-    if (res.ok) {
-      return res.json();
-      } return Promise.reject(`Ошибка: ${res.status}`);
-  })
-  .then((res) => {
-    return res;
-  })
-  .catch((err) => {
-    console.log(err);
-  })
+  .then(checkResponse)
 }
 
 export const deleteLike = (cardID) => {
@@ -135,15 +82,5 @@ export const deleteLike = (cardID) => {
     headers: config.headers,
     method: "DELETE"
   })
-  .then(res => {
-    if (res.ok) {
-      return res.json();
-      } return Promise.reject(`Ошибка: ${res.status}`);
-  })
-  .then((res) => {
-  return res;
-})
-  .catch((err) => {
-    console.log(err);
-  })
+  .then(checkResponse)
 }

@@ -21,11 +21,11 @@ const closeByEscape = (evt) => {
 
 export const submitEditForm = (evt) => {
   evt.preventDefault();
-  profileName.textContent = `${nameInput.value}`;
-  profileAbout.textContent = `${aboutInput.value}`;
   profileSaveButton.textContent = "Сохранение...";
   editProfileInfo()
   .then((res) => {
+    profileName.textContent = `${nameInput.value}`;
+    profileAbout.textContent = `${aboutInput.value}`;
     closePopup(editPopup);
   })
   .catch((err) => {
@@ -38,10 +38,10 @@ export const submitEditForm = (evt) => {
 
 export const submitAvatarForm = (evt) => {
   evt.preventDefault();
-  profileAvatar.src = `${avatarInput.value}`
   avatarSaveButton.textContent = "Сохранение...";
   changeAvatar()
   .then((res) => {
+    profileAvatar.src = `${avatarInput.value}`
     closePopup(avatarPopup);
   })
   .catch((err) => {
